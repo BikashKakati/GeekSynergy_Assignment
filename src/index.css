@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .shadow-custom{
+        box-shadow:0px 0px 12px rgba(0,0,0,0.15), 0px 0px 12px rgba(0,0,0,0.15);
+    }
+    .submit-btn{
+        @apply bg-red-500 hover:bg-red-600 text-white py-3;
+    }
+    .form-box{
+        @apply relative w-full h-full md:h-auto mb-20 md:max-w-[32rem] mx-auto py-8 px-10 md:shadow-custom bg-white rounded-md;
+    }
+}
+body{
+    @apply bg-zinc-200
+}
