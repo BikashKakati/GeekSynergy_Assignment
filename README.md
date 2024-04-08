@@ -1,4 +1,5 @@
 #  Geeksynergy Assignment
+This assignment given by Geeksynergy Technologies Pvt Ltd
 ## Prblem Statement
 1. Create a user signup page with Name, Password, Email, Phone number, and
 Profession (Dropdown) and store the data locally (local storage).
@@ -20,9 +21,18 @@ Company: Geeksynergy Technologies Pvt Ltd
 Address: Sanjayanagar, Bengaluru-56
 Phone: XXXXXXXXX09
 Email: XXXXXX@gmail.com
-## Tech stacks
-<li>React + Vite</li>
-<li>React-router-dom</li>
-<li>Tailwind-css</li>
-<li>Axios</li>
 
+## Tools Used
+- React + Vite
+- React-router-dom
+- Tailwind-css
+- Axios
+- React Toastify
+- React Icons
+
+## Concepts
+- Lazy Loading
+- Private Route
+- Authentication
+- Alerts
+- Custom Hook
