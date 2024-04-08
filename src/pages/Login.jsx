@@ -1,5 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 const USER_KEY = "SIGNUP_TOKEN";
 
@@ -15,23 +16,30 @@ const Login = () => {
         // getting userdata from localstorage 
         const signUpData = getItem();
         if(!signUpData){
-            alert("Account not exist");
+            toast("Account not exist",{
+                type:"warning",
+            });
             return
         }
         const userName = userNameRef.current.value;
         const password = passwordRef.current.value;
         if(userName !== signUpData.userName || password !== signUpData.password){
-            alert("user name or password didnot match");
+            toast("username/password didnot match",{
+                type:"warning",
+            });
             return;
         }
+        toast("login successfull",{
+            type:"success",
+        });
         setItem({...signUpData, isLogin:true})
         Navigate("/");
 
     }
   return (
     <div>
-        <div className="w-full min-h-dvh pt-20">
-            <div className="form-box">
+        <div className="w-full min-h-dvh pt-10">
+            <div className="card">
                 <h4 className='text-center text-2xl font-bold'> Log In</h4>
                 <form className="w-full *:w-full *:mb-3 *:rounded-lg" onSubmit={handleLogin}>
 
@@ -41,7 +49,7 @@ const Login = () => {
                     <label htmlFor="password">Password</label>
                     <input type="password" id='password' className="p-2 bg-zinc-300" ref={passwordRef} />
 
-                    <input type="submit" value="Submit" className="submit-btn mt-3" />
+                    <input type="submit" value="Submit" className="btn mt-3" />
                 </form>
                 <p className='text-center'><Link to="/signup">Create an account? signup</Link></p>
             </div>

@@ -1,7 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 const USER_KEY = "SIGNUP_TOKEN";
+const profession = ["Software Developer", "Doctor", "Teacher"];
 
 const Signup = () => {
     const userNameRef = useRef();
@@ -21,18 +23,24 @@ const Signup = () => {
         const profession = professionRef.current.value;
 
         if(!userName || !email || !password || !phone){
-            alert("Please fill the form");
+            toast("Please fill required details",{
+                type:"warning",
+            });
             return;
         }
         const newUser = {
             userName, email, password, phone, profession,isLogin:false,
         }
+        // saving at local storage
         setItem(newUser);
+        toast("Sign up completed",{
+            type:"success",
+        });
         Navigate("/login");
     }
     return (
-        <div className="w-full min-h-dvh pt-20">
-            <div className="form-box">
+        <div className="w-full min-h-dvh pt-10">
+            <div className="card ">
                 <h4 className='text-center text-2xl font-bold'>Sign Up</h4>
                 <form className="w-full *:w-full *:mb-3 *:rounded-lg" onSubmit={handleSignup}>
                     <label htmlFor="user-name">User Name</label>
@@ -49,11 +57,14 @@ const Signup = () => {
 
                     <label htmlFor="profession">Select Profession</label>
                     <select id='profession' className='bg-zinc-300 py-2 px-3' ref={professionRef}>
-                        <option value="software developer">Software Developer</option>
-                        <option value="doctor">Doctor</option>
+                        {
+                            profession.map((ele,index)=>{
+                                return <option key={index} value={ele.toLowerCase()}>{ele}</option>
+                            })
+                        }
                     </select>
 
-                    <input type="submit" value="Submit" className="submit-btn mt-3" />
+                    <input type="submit" value="Submit" className="btn mt-3" />
                 </form>
                 <p className='text-center'><Link to="/login">Already have an account?</Link></p>
             </div>
