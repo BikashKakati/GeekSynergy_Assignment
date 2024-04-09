@@ -4,7 +4,7 @@ import { VscTriangleDown, VscTriangleUp } from "react-icons/vsc";
 
 const Card = ({ movieData }) => {
     return (
-        <div className='relative card py-5 px-7 mb-1'>
+        <div className='relative card py-2 px-4 md:py-5 md:px-7 mb-1'>
             <div className="flex items-end gap-2 md:gap-3 mb-4">
                 <div className="flex flex-col items-center pr-0 md:pr-6">
                     <VscTriangleUp className='text-xl md:text-3xl' />
@@ -26,7 +26,7 @@ const Card = ({ movieData }) => {
                         Starring:{" "}
                         {
                             movieData?.stars.length ?
-                            movieData?.stars.map((text, index) => <span key={index}>{text},</span>)
+                            movieData?.stars.join(",").slice(0,20) + "..."
                             :"Not Mention"
                         }
                     </div>
