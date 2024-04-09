@@ -29,6 +29,7 @@ Email: XXXXXX@gmail.com
 - Axios
 - React Toastify
 - React Icons
+- Day js
 
 ## Concepts
 - Lazy Loading
