@@ -13,7 +13,8 @@ const CompanyInfo = lazy(() => import("./pages/CompanyInfo"))
 function App() {
 
   return (
-    <main className="max-w-dvw min-h-dvh pb-20">
+    <div className="overflow-hidden">
+      <Navbar />
       <ToastContainer
         position="top-right"
         hideProgressBar={true}
@@ -23,16 +24,17 @@ function App() {
         theme="dark"
         transition={Bounce}
       />
-      <Navbar />
-      <Suspense fallback={ <Loader/>}>
-        <Routes>
-          <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
-          <Route path="/company-info" element={<PrivateRoute><CompanyInfo /></PrivateRoute>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </Suspense>
-    </main>
+      <main className="max-w-dvw min-h-dvh pb-20">
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path="/company-info" element={<PrivateRoute><CompanyInfo /></PrivateRoute>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </Suspense>
+      </main>
+    </div>
   )
 }
 
