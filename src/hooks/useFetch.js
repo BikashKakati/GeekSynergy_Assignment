@@ -9,7 +9,6 @@ export function useFetch() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        console.log("running");
         setLoading(true);
         fetchDataFromApi()
             .then(res => {
